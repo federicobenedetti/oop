@@ -1,0 +1,60 @@
+package com.federicobenedetti.oop;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+
+public class DataSetResult {
+    private String Maintainer;
+    private boolean Private;
+    private String MaintainerEmail;
+    private Timestamp RevisionTimestamp;
+    private String Keywords;
+    private Timestamp MetadataModified;
+    private String TemporalGranularity;
+    private String[] ConceptsEurovoc;
+    private int LicenseId;
+    private String Type;
+    private DataSetResource[] Resources;
+    private int InteroperabilityLevel;
+    private String Name;
+    private boolean IsOpen;
+    private String AccrualPeriodicity;
+    private String OwnerOrg;
+    private String[] GeographicalCoverage;
+    private int RevisionId;
+    private String Identifier;
+    private String VersionDescription;
+    private String[] Extras;
+    private String[] RelationshipAsObject;
+    private int TagString;
+    private Date TemporalCoverageTo;
+    private int NumTags;
+    private int ViewsTotal;
+    private String Id;
+    private Timestamp MetadataCreated;
+    private Date ModifiedDate;
+    private String Capacity;
+    private int Author;
+    private String AuthorEmail;
+    private String[] TypeOfDataset;
+    private String State;
+    private String Version;
+    private int CreatorUserId;
+    private String Status;
+    private int NumResources;
+    private String Description;
+    private String Title;
+    private Date TemporalCoverageFrom;
+    private String TrackingSummary;
+    private DataSetGroup[] Groups;
+    private String[] RelationshipsAsSubject;
+    private String[] Language;
+    private String AlternativeTitle;
+    private String Url;
+    private Date ReleaseDate;
+    private String LicenseTitle;
+    private String Rdf;
+    private String LicenseUrl;
+    private DataSetOrganization Organization;
+
+}
