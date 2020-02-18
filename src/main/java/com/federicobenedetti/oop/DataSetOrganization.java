@@ -1,7 +1,11 @@
 package com.federicobenedetti.oop;
 
-public class DataSetOrganization implements IDataSet {
+import com.google.gson.annotations.SerializedName;
+
+public class DataSetOrganization {
+    @SerializedName("name")
     private String Name;
+    @SerializedName("title")
     private String Title;
 
     public DataSetOrganization() {
@@ -13,21 +17,5 @@ public class DataSetOrganization implements IDataSet {
                 "Name='" + Name + '\'' +
                 ", Title='" + Title + '\'' +
                 '}';
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String title) {
-        Title = title;
     }
 }

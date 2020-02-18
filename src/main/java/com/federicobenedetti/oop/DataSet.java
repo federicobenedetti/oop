@@ -1,9 +1,14 @@
 package com.federicobenedetti.oop;
 
-public class DataSet implements IDataSet {
+import com.google.gson.annotations.SerializedName;
+
+public class DataSet {
+    @SerializedName("help")
     private String Help;
-    private boolean success;
-    private DataSetResult result;
+    @SerializedName("success")
+    private boolean Success;
+    @SerializedName("result")
+    private DataSetResult Result;
 
     public DataSet() {
     }
@@ -12,32 +17,8 @@ public class DataSet implements IDataSet {
     public String toString() {
         return "DataSet{" +
                 "Help='" + Help + '\'' +
-                ", success=" + success +
-                ", result=" + result.toString() +
+                ", success=" + Success +
+                ", result=" + Result.toString() +
                 '}';
-    }
-
-    public String getHelp() {
-        return Help;
-    }
-
-    public void setHelp(String help) {
-        Help = help;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public DataSetResult getResult() {
-        return result;
-    }
-
-    public void setResult(DataSetResult result) {
-        this.result = result;
     }
 }

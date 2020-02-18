@@ -1,61 +1,115 @@
 package com.federicobenedetti.oop;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Arrays;
 
-public class DataSetResult implements IDataSet {
+public class DataSetResult {
+    @SerializedName("maintainer")
     private String Maintainer;
+    @SerializedName("private")
     private boolean Private;
+    @SerializedName("maintainer_email")
     private String MaintainerEmail;
+    @SerializedName("revision_timestamp")
     private Timestamp RevisionTimestamp;
+    @SerializedName("keywords")
     private String Keywords;
+    @SerializedName("metadata_modified")
     private Timestamp MetadataModified;
+    @SerializedName("temporal_granularity")
     private String TemporalGranularity;
+    @SerializedName("concepts_eurovoc")
     private String[] ConceptsEurovoc;
+    @SerializedName("license_id")
     private int LicenseId;
+    @SerializedName("type")
     private String Type;
+    @SerializedName("resources")
     private DataSetResource[] Resources;
+    @SerializedName("interoperability_level")
     private int InteroperabilityLevel;
+    @SerializedName("name")
     private String Name;
+    @SerializedName("is_open")
     private boolean IsOpen;
+    @SerializedName("accrual_periodicity")
     private String AccrualPeriodicity;
+    @SerializedName("owner_org")
     private String OwnerOrg;
+    @SerializedName("geographical_coverage")
     private String[] GeographicalCoverage;
+    @SerializedName("revision_id")
     private int RevisionId;
+    @SerializedName("identifier")
     private String Identifier;
+    @SerializedName("version_description")
     private String VersionDescription;
+    @SerializedName("extras")
     private String[] Extras;
+    @SerializedName("relationship_as_object")
     private String[] RelationshipAsObject;
+    @SerializedName("tag_string")
     private int TagString;
+    @SerializedName("temporal_coverage_to")
     private Date TemporalCoverageTo;
+    @SerializedName("num_tags")
     private int NumTags;
+    @SerializedName("views_total")
     private int ViewsTotal;
+    @SerializedName("id")
     private String Id;
+    @SerializedName("metadata_created")
     private Timestamp MetadataCreated;
+    @SerializedName("modified_date")
     private Date ModifiedDate;
+    @SerializedName("capacity")
     private String Capacity;
+    @SerializedName("author")
     private int Author;
+    @SerializedName("author_email")
     private String AuthorEmail;
+    @SerializedName("type_of_dataset")
     private String[] TypeOfDataset;
+    @SerializedName("state")
     private String State;
+    @SerializedName("version")
     private String Version;
+    @SerializedName("creator_user_id")
     private int CreatorUserId;
+    @SerializedName("status")
     private String Status;
+    @SerializedName("num_resources")
     private int NumResources;
+    @SerializedName("description")
     private String Description;
+    @SerializedName("title")
     private String Title;
+    @SerializedName("temporal_coverage_from")
     private Date TemporalCoverageFrom;
+    @SerializedName("tracking_summary")
     private String TrackingSummary;
+    @SerializedName("groups")
     private DataSetGroup[] Groups;
+    @SerializedName("relationship_as_subject")
     private String[] RelationshipsAsSubject;
+    @SerializedName("language")
     private String[] Language;
+    @SerializedName("alternative_title")
     private String AlternativeTitle;
+    @SerializedName("url")
     private String Url;
+    @SerializedName("release_date")
     private Date ReleaseDate;
+    @SerializedName("license_title")
     private String LicenseTitle;
+    @SerializedName("rdf")
     private String Rdf;
+    @SerializedName("license_url")
     private String LicenseUrl;
+    @SerializedName("organization")
     private DataSetOrganization Organization;
 
     public DataSetResult() {
@@ -117,421 +171,5 @@ public class DataSetResult implements IDataSet {
                 ", LicenseUrl='" + LicenseUrl + '\'' +
                 ", Organization=" + Organization +
                 '}';
-    }
-
-    public String getMaintainer() {
-        return Maintainer;
-    }
-
-    public void setMaintainer(String maintainer) {
-        Maintainer = maintainer;
-    }
-
-    public boolean isPrivate() {
-        return Private;
-    }
-
-    public void setPrivate(boolean aPrivate) {
-        Private = aPrivate;
-    }
-
-    public String getMaintainerEmail() {
-        return MaintainerEmail;
-    }
-
-    public void setMaintainerEmail(String maintainerEmail) {
-        MaintainerEmail = maintainerEmail;
-    }
-
-    public Timestamp getRevisionTimestamp() {
-        return RevisionTimestamp;
-    }
-
-    public void setRevisionTimestamp(Timestamp revisionTimestamp) {
-        RevisionTimestamp = revisionTimestamp;
-    }
-
-    public String getKeywords() {
-        return Keywords;
-    }
-
-    public void setKeywords(String keywords) {
-        Keywords = keywords;
-    }
-
-    public Timestamp getMetadataModified() {
-        return MetadataModified;
-    }
-
-    public void setMetadataModified(Timestamp metadataModified) {
-        MetadataModified = metadataModified;
-    }
-
-    public String getTemporalGranularity() {
-        return TemporalGranularity;
-    }
-
-    public void setTemporalGranularity(String temporalGranularity) {
-        TemporalGranularity = temporalGranularity;
-    }
-
-    public String[] getConceptsEurovoc() {
-        return ConceptsEurovoc;
-    }
-
-    public void setConceptsEurovoc(String[] conceptsEurovoc) {
-        ConceptsEurovoc = conceptsEurovoc;
-    }
-
-    public int getLicenseId() {
-        return LicenseId;
-    }
-
-    public void setLicenseId(int licenseId) {
-        LicenseId = licenseId;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public DataSetResource[] getResources() {
-        return Resources;
-    }
-
-    public void setResources(DataSetResource[] resources) {
-        Resources = resources;
-    }
-
-    public int getInteroperabilityLevel() {
-        return InteroperabilityLevel;
-    }
-
-    public void setInteroperabilityLevel(int interoperabilityLevel) {
-        InteroperabilityLevel = interoperabilityLevel;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public boolean isOpen() {
-        return IsOpen;
-    }
-
-    public void setOpen(boolean open) {
-        IsOpen = open;
-    }
-
-    public String getAccrualPeriodicity() {
-        return AccrualPeriodicity;
-    }
-
-    public void setAccrualPeriodicity(String accrualPeriodicity) {
-        AccrualPeriodicity = accrualPeriodicity;
-    }
-
-    public String getOwnerOrg() {
-        return OwnerOrg;
-    }
-
-    public void setOwnerOrg(String ownerOrg) {
-        OwnerOrg = ownerOrg;
-    }
-
-    public String[] getGeographicalCoverage() {
-        return GeographicalCoverage;
-    }
-
-    public void setGeographicalCoverage(String[] geographicalCoverage) {
-        GeographicalCoverage = geographicalCoverage;
-    }
-
-    public int getRevisionId() {
-        return RevisionId;
-    }
-
-    public void setRevisionId(int revisionId) {
-        RevisionId = revisionId;
-    }
-
-    public String getIdentifier() {
-        return Identifier;
-    }
-
-    public void setIdentifier(String identifier) {
-        Identifier = identifier;
-    }
-
-    public String getVersionDescription() {
-        return VersionDescription;
-    }
-
-    public void setVersionDescription(String versionDescription) {
-        VersionDescription = versionDescription;
-    }
-
-    public String[] getExtras() {
-        return Extras;
-    }
-
-    public void setExtras(String[] extras) {
-        Extras = extras;
-    }
-
-    public String[] getRelationshipAsObject() {
-        return RelationshipAsObject;
-    }
-
-    public void setRelationshipAsObject(String[] relationshipAsObject) {
-        RelationshipAsObject = relationshipAsObject;
-    }
-
-    public int getTagString() {
-        return TagString;
-    }
-
-    public void setTagString(int tagString) {
-        TagString = tagString;
-    }
-
-    public Date getTemporalCoverageTo() {
-        return TemporalCoverageTo;
-    }
-
-    public void setTemporalCoverageTo(Date temporalCoverageTo) {
-        TemporalCoverageTo = temporalCoverageTo;
-    }
-
-    public int getNumTags() {
-        return NumTags;
-    }
-
-    public void setNumTags(int numTags) {
-        NumTags = numTags;
-    }
-
-    public int getViewsTotal() {
-        return ViewsTotal;
-    }
-
-    public void setViewsTotal(int viewsTotal) {
-        ViewsTotal = viewsTotal;
-    }
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
-
-    public Timestamp getMetadataCreated() {
-        return MetadataCreated;
-    }
-
-    public void setMetadataCreated(Timestamp metadataCreated) {
-        MetadataCreated = metadataCreated;
-    }
-
-    public Date getModifiedDate() {
-        return ModifiedDate;
-    }
-
-    public void setModifiedDate(Date modifiedDate) {
-        ModifiedDate = modifiedDate;
-    }
-
-    public String getCapacity() {
-        return Capacity;
-    }
-
-    public void setCapacity(String capacity) {
-        Capacity = capacity;
-    }
-
-    public int getAuthor() {
-        return Author;
-    }
-
-    public void setAuthor(int author) {
-        Author = author;
-    }
-
-    public String getAuthorEmail() {
-        return AuthorEmail;
-    }
-
-    public void setAuthorEmail(String authorEmail) {
-        AuthorEmail = authorEmail;
-    }
-
-    public String[] getTypeOfDataset() {
-        return TypeOfDataset;
-    }
-
-    public void setTypeOfDataset(String[] typeOfDataset) {
-        TypeOfDataset = typeOfDataset;
-    }
-
-    public String getState() {
-        return State;
-    }
-
-    public void setState(String state) {
-        State = state;
-    }
-
-    public String getVersion() {
-        return Version;
-    }
-
-    public void setVersion(String version) {
-        Version = version;
-    }
-
-    public int getCreatorUserId() {
-        return CreatorUserId;
-    }
-
-    public void setCreatorUserId(int creatorUserId) {
-        CreatorUserId = creatorUserId;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
-    }
-
-    public int getNumResources() {
-        return NumResources;
-    }
-
-    public void setNumResources(int numResources) {
-        NumResources = numResources;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String title) {
-        Title = title;
-    }
-
-    public Date getTemporalCoverageFrom() {
-        return TemporalCoverageFrom;
-    }
-
-    public void setTemporalCoverageFrom(Date temporalCoverageFrom) {
-        TemporalCoverageFrom = temporalCoverageFrom;
-    }
-
-    public String getTrackingSummary() {
-        return TrackingSummary;
-    }
-
-    public void setTrackingSummary(String trackingSummary) {
-        TrackingSummary = trackingSummary;
-    }
-
-    public DataSetGroup[] getGroups() {
-        return Groups;
-    }
-
-    public void setGroups(DataSetGroup[] groups) {
-        Groups = groups;
-    }
-
-    public String[] getRelationshipsAsSubject() {
-        return RelationshipsAsSubject;
-    }
-
-    public void setRelationshipsAsSubject(String[] relationshipsAsSubject) {
-        RelationshipsAsSubject = relationshipsAsSubject;
-    }
-
-    public String[] getLanguage() {
-        return Language;
-    }
-
-    public void setLanguage(String[] language) {
-        Language = language;
-    }
-
-    public String getAlternativeTitle() {
-        return AlternativeTitle;
-    }
-
-    public void setAlternativeTitle(String alternativeTitle) {
-        AlternativeTitle = alternativeTitle;
-    }
-
-    public String getUrl() {
-        return Url;
-    }
-
-    public void setUrl(String url) {
-        Url = url;
-    }
-
-    public Date getReleaseDate() {
-        return ReleaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        ReleaseDate = releaseDate;
-    }
-
-    public String getLicenseTitle() {
-        return LicenseTitle;
-    }
-
-    public void setLicenseTitle(String licenseTitle) {
-        LicenseTitle = licenseTitle;
-    }
-
-    public String getRdf() {
-        return Rdf;
-    }
-
-    public void setRdf(String rdf) {
-        Rdf = rdf;
-    }
-
-    public String getLicenseUrl() {
-        return LicenseUrl;
-    }
-
-    public void setLicenseUrl(String licenseUrl) {
-        LicenseUrl = licenseUrl;
-    }
-
-    public DataSetOrganization getOrganization() {
-        return Organization;
-    }
-
-    public void setOrganization(DataSetOrganization organization) {
-        Organization = organization;
     }
 }

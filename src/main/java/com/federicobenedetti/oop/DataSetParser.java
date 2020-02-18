@@ -1,8 +1,9 @@
 package com.federicobenedetti.oop;
 
-import org.supercsv.io.ICsvListReader;
+import com.google.gson.Gson;
 
 import java.io.File;
+import java.io.FileReader;
 
 public class DataSetParser {
     private File _dataSetFile;
@@ -14,13 +15,11 @@ public class DataSetParser {
     }
 
     public void ParseDataSetAndFill() throws Exception {
-        ICsvListReader listReader = null;
-        try {
+        System.out.println("Parsing DataSet");
 
-        } finally {
-            if (listReader != null) {
-                listReader.close();
-            }
-        }
+        Gson gson = new Gson();
+
+        this._dataSet = gson.fromJson(new FileReader(this._dataSetFile), DataSet.class);
+        System.out.println("DataSet: " + this._dataSet.toString());
     }
 }

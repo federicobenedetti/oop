@@ -1,26 +1,47 @@
 package com.federicobenedetti.oop;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.sql.Timestamp;
 
-public class DataSetResource implements IDataSet {
+public class DataSetResource {
+    @SerializedName("mimetype")
     private String Mimetype;
+    @SerializedName("mimetype_inner")
     private String MimetypeInner;
+    @SerializedName("hash")
     private String Hash;
+    @SerializedName("description")
     private String Description;
+    @SerializedName("format")
     private String Format;
+    @SerializedName("url")
     private String Url;
+    @SerializedName("created")
     private Timestamp Created;
+    @SerializedName("tracking_summary")
     private String TrackingSummary;
+    @SerializedName("name")
     private String Name;
+    @SerializedName("state")
     private String State;
+    @SerializedName("last_modified")
     private Timestamp LastModified;
+    @SerializedName("download_total_resources")
     private int DownloadTotalResources;
+    @SerializedName("url_type")
     private String UrlType;
+    @SerializedName("position")
     private String Position;
+    @SerializedName("iframe_code")
     private String IframeCode;
+    @SerializedName("datastore_active")
     private boolean DatastoreActive;
+    @SerializedName("id")
     private String Id;
+    @SerializedName("resource_type")
     private String ResourceType;
+    @SerializedName("size")
     private String Size;
 
     public DataSetResource() {
@@ -49,157 +70,5 @@ public class DataSetResource implements IDataSet {
                 ", ResourceType='" + ResourceType + '\'' +
                 ", Size='" + Size + '\'' +
                 '}';
-    }
-
-    public String getMimetype() {
-        return Mimetype;
-    }
-
-    public void setMimetype(String mimetype) {
-        Mimetype = mimetype;
-    }
-
-    public String getMimetypeInner() {
-        return MimetypeInner;
-    }
-
-    public void setMimetypeInner(String mimetypeInner) {
-        MimetypeInner = mimetypeInner;
-    }
-
-    public String getHash() {
-        return Hash;
-    }
-
-    public void setHash(String hash) {
-        Hash = hash;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
-    }
-
-    public String getFormat() {
-        return Format;
-    }
-
-    public void setFormat(String format) {
-        Format = format;
-    }
-
-    public String getUrl() {
-        return Url;
-    }
-
-    public void setUrl(String url) {
-        Url = url;
-    }
-
-    public Timestamp getCreated() {
-        return Created;
-    }
-
-    public void setCreated(Timestamp created) {
-        Created = created;
-    }
-
-    public String getTrackingSummary() {
-        return TrackingSummary;
-    }
-
-    public void setTrackingSummary(String trackingSummary) {
-        TrackingSummary = trackingSummary;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getState() {
-        return State;
-    }
-
-    public void setState(String state) {
-        State = state;
-    }
-
-    public Timestamp getLastModified() {
-        return LastModified;
-    }
-
-    public void setLastModified(Timestamp lastModified) {
-        LastModified = lastModified;
-    }
-
-    public int getDownloadTotalResources() {
-        return DownloadTotalResources;
-    }
-
-    public void setDownloadTotalResources(int downloadTotalResources) {
-        DownloadTotalResources = downloadTotalResources;
-    }
-
-    public String getUrlType() {
-        return UrlType;
-    }
-
-    public void setUrlType(String urlType) {
-        UrlType = urlType;
-    }
-
-    public String getPosition() {
-        return Position;
-    }
-
-    public void setPosition(String position) {
-        Position = position;
-    }
-
-    public String getIframeCode() {
-        return IframeCode;
-    }
-
-    public void setIframeCode(String iframeCode) {
-        IframeCode = iframeCode;
-    }
-
-    public boolean isDatastoreActive() {
-        return DatastoreActive;
-    }
-
-    public void setDatastoreActive(boolean datastoreActive) {
-        DatastoreActive = datastoreActive;
-    }
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
-
-    public String getResourceType() {
-        return ResourceType;
-    }
-
-    public void setResourceType(String resourceType) {
-        ResourceType = resourceType;
-    }
-
-    public String getSize() {
-        return Size;
-    }
-
-    public void setSize(String size) {
-        Size = size;
     }
 }
