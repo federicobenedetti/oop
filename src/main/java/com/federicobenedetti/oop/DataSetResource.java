@@ -2,8 +2,6 @@ package com.federicobenedetti.oop;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Timestamp;
-
 public class DataSetResource {
     @SerializedName("mimetype")
     private String Mimetype;
@@ -18,7 +16,7 @@ public class DataSetResource {
     @SerializedName("url")
     private String Url;
     @SerializedName("created")
-    private Timestamp Created;
+    private String Created;
     @SerializedName("tracking_summary")
     private String TrackingSummary;
     @SerializedName("name")
@@ -26,7 +24,7 @@ public class DataSetResource {
     @SerializedName("state")
     private String State;
     @SerializedName("last_modified")
-    private Timestamp LastModified;
+    private String LastModified;
     @SerializedName("download_total_resources")
     private int DownloadTotalResources;
     @SerializedName("url_type")

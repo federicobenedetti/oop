@@ -27,15 +27,7 @@ public class DataSetDownloadManager {
     }
 
     public void DownloadDataSet() {
-        if (this._isDataSetPresent) {
-            System.out.println("Dataset is already downloaded");
-            DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
-            try {
-                parser.ParseDataSetAndFill();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
+        if (!this._isDataSetPresent) {
             try {
                 System.out.println("Starting download");
                 URL website = new URL(this._dataSetUrl);
@@ -45,6 +37,13 @@ public class DataSetDownloadManager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
+        try {
+            parser.ParseDataSetAndFill();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

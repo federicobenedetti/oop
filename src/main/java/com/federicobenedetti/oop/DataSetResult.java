@@ -2,8 +2,6 @@ package com.federicobenedetti.oop;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.Arrays;
 
 public class DataSetResult {
@@ -14,11 +12,11 @@ public class DataSetResult {
     @SerializedName("maintainer_email")
     private String MaintainerEmail;
     @SerializedName("revision_timestamp")
-    private Timestamp RevisionTimestamp;
+    private String RevisionTimestamp;
     @SerializedName("keywords")
     private String Keywords;
     @SerializedName("metadata_modified")
-    private Timestamp MetadataModified;
+    private String MetadataModified;
     @SerializedName("temporal_granularity")
     private String TemporalGranularity;
     @SerializedName("concepts_eurovoc")
@@ -54,7 +52,7 @@ public class DataSetResult {
     @SerializedName("tag_string")
     private int TagString;
     @SerializedName("temporal_coverage_to")
-    private Date TemporalCoverageTo;
+    private String TemporalCoverageTo;
     @SerializedName("num_tags")
     private int NumTags;
     @SerializedName("views_total")
@@ -62,9 +60,9 @@ public class DataSetResult {
     @SerializedName("id")
     private String Id;
     @SerializedName("metadata_created")
-    private Timestamp MetadataCreated;
+    private String MetadataCreated;
     @SerializedName("modified_date")
-    private Date ModifiedDate;
+    private String ModifiedDate;
     @SerializedName("capacity")
     private String Capacity;
     @SerializedName("author")
@@ -88,7 +86,7 @@ public class DataSetResult {
     @SerializedName("title")
     private String Title;
     @SerializedName("temporal_coverage_from")
-    private Date TemporalCoverageFrom;
+    private String TemporalCoverageFrom;
     @SerializedName("tracking_summary")
     private String TrackingSummary;
     @SerializedName("groups")
@@ -102,7 +100,7 @@ public class DataSetResult {
     @SerializedName("url")
     private String Url;
     @SerializedName("release_date")
-    private Date ReleaseDate;
+    private String ReleaseDate;
     @SerializedName("license_title")
     private String LicenseTitle;
     @SerializedName("rdf")
