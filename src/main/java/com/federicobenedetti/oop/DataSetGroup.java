@@ -1,9 +1,17 @@
 package com.federicobenedetti.oop;
 
-public class DataSetGroup {
+public class DataSetGroup implements IDataSet {
     private String Title;
 
-    public DataSetGroup() { }
+    public DataSetGroup() {
+    }
+
+    @Override
+    public String toString() {
+        return "DataSetGroup{" +
+                "Title='" + Title + '\'' +
+                '}';
+    }
 
     public String getTitle() {
         return Title;

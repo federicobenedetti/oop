@@ -1,5 +1,7 @@
 package com.federicobenedetti.oop;
 
+import org.supercsv.io.ICsvListReader;
+
 import java.io.File;
 
 public class DataSetParser {
@@ -11,7 +13,14 @@ public class DataSetParser {
         this._dataSet = dataSet;
     }
 
-    public void ParseDataSetAndFill() {
+    public void ParseDataSetAndFill() throws Exception {
+        ICsvListReader listReader = null;
+        try {
 
+        } finally {
+            if (listReader != null) {
+                listReader.close();
+            }
+        }
     }
 }

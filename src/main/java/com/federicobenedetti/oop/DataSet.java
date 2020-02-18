@@ -1,11 +1,21 @@
 package com.federicobenedetti.oop;
 
-public class DataSet {
+public class DataSet implements IDataSet {
     private String Help;
     private boolean success;
     private DataSetResult result;
 
-    public DataSet() { }
+    public DataSet() {
+    }
+
+    @Override
+    public String toString() {
+        return "DataSet{" +
+                "Help='" + Help + '\'' +
+                ", success=" + success +
+                ", result=" + result.toString() +
+                '}';
+    }
 
     public String getHelp() {
         return Help;

@@ -2,8 +2,9 @@ package com.federicobenedetti.oop;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Arrays;
 
-public class DataSetResult {
+public class DataSetResult implements IDataSet {
     private String Maintainer;
     private boolean Private;
     private String MaintainerEmail;
@@ -57,7 +58,66 @@ public class DataSetResult {
     private String LicenseUrl;
     private DataSetOrganization Organization;
 
-    public DataSetResult() { }
+    public DataSetResult() {
+    }
+
+    @Override
+    public String toString() {
+        return "DataSetResult{" +
+                "Maintainer='" + Maintainer + '\'' +
+                ", Private=" + Private +
+                ", MaintainerEmail='" + MaintainerEmail + '\'' +
+                ", RevisionTimestamp=" + RevisionTimestamp +
+                ", Keywords='" + Keywords + '\'' +
+                ", MetadataModified=" + MetadataModified +
+                ", TemporalGranularity='" + TemporalGranularity + '\'' +
+                ", ConceptsEurovoc=" + Arrays.toString(ConceptsEurovoc) +
+                ", LicenseId=" + LicenseId +
+                ", Type='" + Type + '\'' +
+                ", Resources=" + Arrays.toString(Resources) +
+                ", InteroperabilityLevel=" + InteroperabilityLevel +
+                ", Name='" + Name + '\'' +
+                ", IsOpen=" + IsOpen +
+                ", AccrualPeriodicity='" + AccrualPeriodicity + '\'' +
+                ", OwnerOrg='" + OwnerOrg + '\'' +
+                ", GeographicalCoverage=" + Arrays.toString(GeographicalCoverage) +
+                ", RevisionId=" + RevisionId +
+                ", Identifier='" + Identifier + '\'' +
+                ", VersionDescription='" + VersionDescription + '\'' +
+                ", Extras=" + Arrays.toString(Extras) +
+                ", RelationshipAsObject=" + Arrays.toString(RelationshipAsObject) +
+                ", TagString=" + TagString +
+                ", TemporalCoverageTo=" + TemporalCoverageTo +
+                ", NumTags=" + NumTags +
+                ", ViewsTotal=" + ViewsTotal +
+                ", Id='" + Id + '\'' +
+                ", MetadataCreated=" + MetadataCreated +
+                ", ModifiedDate=" + ModifiedDate +
+                ", Capacity='" + Capacity + '\'' +
+                ", Author=" + Author +
+                ", AuthorEmail='" + AuthorEmail + '\'' +
+                ", TypeOfDataset=" + Arrays.toString(TypeOfDataset) +
+                ", State='" + State + '\'' +
+                ", Version='" + Version + '\'' +
+                ", CreatorUserId=" + CreatorUserId +
+                ", Status='" + Status + '\'' +
+                ", NumResources=" + NumResources +
+                ", Description='" + Description + '\'' +
+                ", Title='" + Title + '\'' +
+                ", TemporalCoverageFrom=" + TemporalCoverageFrom +
+                ", TrackingSummary='" + TrackingSummary + '\'' +
+                ", Groups=" + Arrays.toString(Groups) +
+                ", RelationshipsAsSubject=" + Arrays.toString(RelationshipsAsSubject) +
+                ", Language=" + Arrays.toString(Language) +
+                ", AlternativeTitle='" + AlternativeTitle + '\'' +
+                ", Url='" + Url + '\'' +
+                ", ReleaseDate=" + ReleaseDate +
+                ", LicenseTitle='" + LicenseTitle + '\'' +
+                ", Rdf='" + Rdf + '\'' +
+                ", LicenseUrl='" + LicenseUrl + '\'' +
+                ", Organization=" + Organization +
+                '}';
+    }
 
     public String getMaintainer() {
         return Maintainer;

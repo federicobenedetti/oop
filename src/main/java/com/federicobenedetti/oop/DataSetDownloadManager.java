@@ -29,6 +29,12 @@ public class DataSetDownloadManager {
     public void DownloadDataSet() {
         if (this._isDataSetPresent) {
             System.out.println("Dataset is already downloaded");
+            DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
+            try {
+                parser.ParseDataSetAndFill();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             try {
                 System.out.println("Starting download");

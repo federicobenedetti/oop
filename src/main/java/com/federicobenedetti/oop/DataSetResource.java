@@ -2,7 +2,7 @@ package com.federicobenedetti.oop;
 
 import java.sql.Timestamp;
 
-public class DataSetResource {
+public class DataSetResource implements IDataSet {
     private String Mimetype;
     private String MimetypeInner;
     private String Hash;
@@ -23,7 +23,33 @@ public class DataSetResource {
     private String ResourceType;
     private String Size;
 
-    public DataSetResource() { }
+    public DataSetResource() {
+    }
+
+    @Override
+    public String toString() {
+        return "DataSetResource{" +
+                "Mimetype='" + Mimetype + '\'' +
+                ", MimetypeInner='" + MimetypeInner + '\'' +
+                ", Hash='" + Hash + '\'' +
+                ", Description='" + Description + '\'' +
+                ", Format='" + Format + '\'' +
+                ", Url='" + Url + '\'' +
+                ", Created=" + Created +
+                ", TrackingSummary='" + TrackingSummary + '\'' +
+                ", Name='" + Name + '\'' +
+                ", State='" + State + '\'' +
+                ", LastModified=" + LastModified +
+                ", DownloadTotalResources=" + DownloadTotalResources +
+                ", UrlType='" + UrlType + '\'' +
+                ", Position='" + Position + '\'' +
+                ", IframeCode='" + IframeCode + '\'' +
+                ", DatastoreActive=" + DatastoreActive +
+                ", Id='" + Id + '\'' +
+                ", ResourceType='" + ResourceType + '\'' +
+                ", Size='" + Size + '\'' +
+                '}';
+    }
 
     public String getMimetype() {
         return Mimetype;
