@@ -1,17 +1,19 @@
 package com.federicobenedetti.oop;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class DataSetDownloadManager {
 
     private String _dataSetUrl;
     private DataSet _dataSet;
-    private String _dataSetName = "dataset.csv";
+    private String _dataSetName = "dataset.tsv";
     private boolean _isDataSetPresent = false;
 
     public DataSetDownloadManager(String url, DataSet dataSet) {
@@ -30,18 +32,28 @@ public class DataSetDownloadManager {
         if (!this._isDataSetPresent) {
             try {
                 System.out.println("Starting download");
-                URL website = new URL(this._dataSetUrl);
-                ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                FileOutputStream fos = new FileOutputStream(this._dataSetName);
-                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                HttpURLConnection.setFollowRedirects(true);
+                URL url = new URL(this._dataSetUrl);
+                HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+                httpConn.setInstanceFollowRedirects(true);
+                httpConn.setDoInput(true);
+                httpConn.connect();
+                if (httpConn.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+                    System.out.println("Redirect detected");
+                    URL redirectUrl = new URL(httpConn.getHeaderField("Location"));
+                    System.out.println("Redirect URL: " + redirectUrl);
+                    httpConn = (HttpURLConnection) redirectUrl.openConnection();
+                }
+                InputStream is = httpConn.getInputStream();
+                Files.copy(is, Paths.get(this._dataSetName), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
+        // DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
         try {
-            parser.ParseDataSetAndFill();
+            //parser.ParseDataSetAndFill();
         } catch (Exception e) {
             e.printStackTrace();
         }

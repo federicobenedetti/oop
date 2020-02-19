@@ -1,6 +1,12 @@
 package com.federicobenedetti.oop;
 
-import com.google.gson.Gson;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.ParseBool;
+import org.supercsv.cellprocessor.constraint.NotNull;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvBeanReader;
+import org.supercsv.io.ICsvBeanReader;
+import org.supercsv.prefs.CsvPreference;
 
 import java.io.File;
 import java.io.FileReader;
@@ -16,10 +22,50 @@ public class DataSetParser {
 
     public void ParseDataSetAndFill() throws Exception {
         System.out.println("Parsing DataSet");
+        ICsvBeanReader beanReader = null;
+        try {
+            String[] header = {"bmi,sex,age,quantile,time\\geo", "BE", "BG", "CZ", "DE", "EE", "EL", "ES", "FR", "CY", "LV", "HU", "MT", "AT", "PL", "RO", "SI", "SK", "TR"};
 
-        Gson gson = new Gson();
+            beanReader = new CsvBeanReader(new FileReader(this._dataSetFile), CsvPreference.TAB_PREFERENCE);
 
-        this._dataSet = gson.fromJson(new FileReader(this._dataSetFile), DataSet.class);
-        System.out.println("DataSet: " + this._dataSet.toString());
+            System.out.println("Reading: " + beanReader.read(DataSet.class, header));
+
+        } finally {
+            if (beanReader != null) {
+                beanReader.close();
+            }
+        }
+
+    }
+
+    private CellProcessor[] GetProcessor() {
+        return new CellProcessor[]{
+                new NotNull(),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool()),
+                new Optional(new ParseBool())
+        };
     }
 }
