@@ -63,7 +63,7 @@ public class DataSet {
         if (number.isEmpty()) {
             return 0;
         }
-        if (NumberUtils.isParsable(number)) {
+        if (NumberUtils.isNumber(number)) {
             return Double.parseDouble(number);
         }
         return 0;
