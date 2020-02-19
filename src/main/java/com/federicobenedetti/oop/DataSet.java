@@ -1,25 +1,27 @@
 package com.federicobenedetti.oop;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 public class DataSet {
     private String BmiSexAgeQuantileTimeGeo;
-    private float BE;
-    private float BG;
-    private float CZ;
-    private float DE;
-    private float EE;
-    private float EL;
-    private float ES;
-    private float FR;
-    private float CY;
-    private float LV;
-    private float HU;
-    private float MT;
-    private float AT;
-    private float PL;
-    private float RO;
-    private float SI;
-    private float SK;
-    private float TR;
+    private double BE;
+    private double BG;
+    private double CZ;
+    private double DE;
+    private double EE;
+    private double EL;
+    private double ES;
+    private double FR;
+    private double CY;
+    private double LV;
+    private double HU;
+    private double MT;
+    private double AT;
+    private double PL;
+    private double RO;
+    private double SI;
+    private double SK;
+    private double TR;
 
     public DataSet() {
     }
@@ -27,25 +29,25 @@ public class DataSet {
     @Override
     public String toString() {
         return "DataSet{" +
-                "BmiSexAgeQuantileTimeGeo='" + BmiSexAgeQuantileTimeGeo + '\'' +
-                ", BE=" + BE +
-                ", BG=" + BG +
-                ", CZ=" + CZ +
-                ", DE=" + DE +
-                ", EE=" + EE +
-                ", EL=" + EL +
-                ", ES=" + ES +
-                ", FR=" + FR +
-                ", CY=" + CY +
-                ", LV=" + LV +
-                ", HU=" + HU +
-                ", MT=" + MT +
-                ", AT=" + AT +
-                ", PL=" + PL +
-                ", RO=" + RO +
-                ", SI=" + SI +
-                ", SK=" + SK +
-                ", TR=" + TR +
+                "BmiSexAgeQuantileTimeGeo = '" + BmiSexAgeQuantileTimeGeo + '\'' +
+                ", BE = " + BE +
+                ", BG = " + BG +
+                ", CZ = " + CZ +
+                ", DE = " + DE +
+                ", EE = " + EE +
+                ", EL = " + EL +
+                ", ES = " + ES +
+                ", FR = " + FR +
+                ", CY = " + CY +
+                ", LV = " + LV +
+                ", HU = " + HU +
+                ", MT = " + MT +
+                ", AT = " + AT +
+                ", PL = " + PL +
+                ", RO = " + RO +
+                ", SI = " + SI +
+                ", SK = " + SK +
+                ", TR = " + TR +
                 '}';
     }
 
@@ -57,147 +59,157 @@ public class DataSet {
         BmiSexAgeQuantileTimeGeo = bmiSexAgeQuantileTimeGeo;
     }
 
-    public float getBE() {
+    private double StringToBoolean(String number) {
+        if (number.isEmpty()) {
+            return 0;
+        }
+        if (NumberUtils.isParsable(number)) {
+            return Double.parseDouble(number);
+        }
+        return 0;
+    }
+
+    public double getBE() {
         return BE;
     }
 
-    public void setBE(float BE) {
-        this.BE = BE;
+    public void setBE(String BE) {
+        this.BE = StringToBoolean(BE);
     }
 
-    public float getBG() {
+    public double getBG() {
         return BG;
     }
 
-    public void setBG(float BG) {
-        this.BG = BG;
+    public void setBG(String BG) {
+        this.BG = StringToBoolean(BG);
     }
 
-    public float getCZ() {
+    public double getCZ() {
         return CZ;
     }
 
-    public void setCZ(float CZ) {
-        this.CZ = CZ;
+    public void setCZ(String CZ) {
+        this.CZ = StringToBoolean(CZ);
     }
 
-    public float getDE() {
+    public double getDE() {
         return DE;
     }
 
-    public void setDE(float DE) {
-        this.DE = DE;
+    public void setDE(String DE) {
+        this.DE = StringToBoolean(DE);
     }
 
-    public float getEE() {
+    public double getEE() {
         return EE;
     }
 
-    public void setEE(float EE) {
-        this.EE = EE;
+    public void setEE(String EE) {
+        this.EE = StringToBoolean(EE);
     }
 
-    public float getEL() {
+    public double getEL() {
         return EL;
     }
 
-    public void setEL(float EL) {
-        this.EL = EL;
+    public void setEL(String EL) {
+        this.EL = StringToBoolean(EL);
     }
 
-    public float getES() {
+    public double getES() {
         return ES;
     }
 
-    public void setES(float ES) {
-        this.ES = ES;
+    public void setES(String ES) {
+        this.ES = StringToBoolean(ES);
     }
 
-    public float getFR() {
+    public double getFR() {
         return FR;
     }
 
-    public void setFR(float FR) {
-        this.FR = FR;
+    public void setFR(String FR) {
+        this.FR = StringToBoolean(FR);
     }
 
-    public float getCY() {
+    public double getCY() {
         return CY;
     }
 
-    public void setCY(float CY) {
-        this.CY = CY;
+    public void setCY(String CY) {
+        this.CY = StringToBoolean(CY);
     }
 
-    public float getLV() {
+    public double getLV() {
         return LV;
     }
 
-    public void setLV(float LV) {
-        this.LV = LV;
+    public void setLV(String LV) {
+        this.LV = StringToBoolean(LV);
     }
 
-    public float getHU() {
+    public double getHU() {
         return HU;
     }
 
-    public void setHU(float HU) {
-        this.HU = HU;
+    public void setHU(String HU) {
+        this.HU = StringToBoolean(HU);
     }
 
-    public float getMT() {
+    public double getMT() {
         return MT;
     }
 
-    public void setMT(float MT) {
-        this.MT = MT;
+    public void setMT(String MT) {
+        this.MT = StringToBoolean(MT);
     }
 
-    public float getAT() {
+    public double getAT() {
         return AT;
     }
 
-    public void setAT(float AT) {
-        this.AT = AT;
+    public void setAT(String AT) {
+        this.AT = StringToBoolean(AT);
     }
 
-    public float getPL() {
+    public double getPL() {
         return PL;
     }
 
-    public void setPL(float PL) {
-        this.PL = PL;
+    public void setPL(String PL) {
+        this.PL = StringToBoolean(PL);
     }
 
-    public float getRO() {
+    public double getRO() {
         return RO;
     }
 
-    public void setRO(float RO) {
-        this.RO = RO;
+    public void setRO(String RO) {
+        this.RO = StringToBoolean(RO);
     }
 
-    public float getSI() {
+    public double getSI() {
         return SI;
     }
 
-    public void setSI(float SI) {
-        this.SI = SI;
+    public void setSI(String SI) {
+        this.SI = StringToBoolean(SI);
     }
 
-    public float getSK() {
+    public double getSK() {
         return SK;
     }
 
-    public void setSK(float SK) {
-        this.SK = SK;
+    public void setSK(String SK) {
+        this.SK = StringToBoolean(SK);
     }
 
-    public float getTR() {
+    public double getTR() {
         return TR;
     }
 
-    public void setTR(float TR) {
-        this.TR = TR;
+    public void setTR(String TR) {
+        this.TR = StringToBoolean(TR);
     }
 }

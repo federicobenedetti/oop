@@ -8,25 +8,32 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 
 public class DataSetDownloadManager {
 
     private String _dataSetUrl;
-    private DataSet _dataSet;
+    private ArrayList<DataSet> _dataSet;
     private String _dataSetName = "dataset.tsv";
     private boolean _isDataSetPresent = false;
 
-    public DataSetDownloadManager(String url, DataSet dataSet) {
+    public DataSetDownloadManager(String url, ArrayList<DataSet> dataSet) {
         this._dataSet = dataSet;
 
         System.out.println("DatasetDownloadManager init with URL: " + url);
         this._dataSetUrl = url;
 
-        File f = new File(this._dataSetName);
-        if(f.exists() && !f.isDirectory()) {
-            this._isDataSetPresent = true;
-        }
+        this._isDataSetPresent = IsDataSetPresent();
     }
+
+    private boolean IsDataSetPresent() {
+        File f = new File(this._dataSetName);
+        if (f.exists() && !f.isDirectory()) {
+            return true;
+        }
+        return false;
+    }
+
 
     public void DownloadDataSet() {
         if (!this._isDataSetPresent) {
@@ -51,11 +58,14 @@ public class DataSetDownloadManager {
             }
         }
 
-        // DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
-        try {
-            //parser.ParseDataSetAndFill();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (IsDataSetPresent()) {
+            System.out.println("DataSet downloaded, now proceeding to parse...");
+            DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
+            try {
+                parser.ParseDataSetAndFill();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

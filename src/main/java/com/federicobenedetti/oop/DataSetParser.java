@@ -1,71 +1,94 @@
 package com.federicobenedetti.oop;
 
-import org.supercsv.cellprocessor.Optional;
-import org.supercsv.cellprocessor.ParseBool;
-import org.supercsv.cellprocessor.constraint.NotNull;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-import org.supercsv.io.CsvBeanReader;
-import org.supercsv.io.ICsvBeanReader;
-import org.supercsv.prefs.CsvPreference;
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class DataSetParser {
     private File _dataSetFile;
-    private DataSet _dataSet;
+    private ArrayList<DataSet> _dataSet;
 
-    public DataSetParser(File dataSetFile, DataSet dataSet) {
+    public DataSetParser(File dataSetFile, ArrayList<DataSet> dataSet) {
         this._dataSetFile = dataSetFile;
         this._dataSet = dataSet;
     }
 
     public void ParseDataSetAndFill() throws Exception {
         System.out.println("Parsing DataSet");
-        ICsvBeanReader beanReader = null;
-        try {
-            String[] header = {"bmi,sex,age,quantile,time\\geo", "BE", "BG", "CZ", "DE", "EE", "EL", "ES", "FR", "CY", "LV", "HU", "MT", "AT", "PL", "RO", "SI", "SK", "TR"};
+        BufferedReader csvReader = new BufferedReader(new FileReader(this._dataSetFile));
 
-            beanReader = new CsvBeanReader(new FileReader(this._dataSetFile), CsvPreference.TAB_PREFERENCE);
+        String row;
+        while ((row = csvReader.readLine()) != null) {
+            String[] data = row.split("\t");
 
-            System.out.println("Reading: " + beanReader.read(DataSet.class, header));
+            for (int i = 0; i < data.length; i++) {
+                DataSet ds = new DataSet();
+                switch (i) {
+                    case 0:
+                        ds.setBmiSexAgeQuantileTimeGeo(data[i]);
+                        break;
+                    case 1:
+                        ds.setBE(data[i]);
+                        break;
+                    case 2:
+                        ds.setBG(data[i]);
+                        break;
+                    case 3:
+                        ds.setDE(data[i]);
+                        break;
+                    case 4:
+                        ds.setEE(data[i]);
+                        break;
+                    case 5:
+                        ds.setEL(data[i]);
+                        break;
+                    case 6:
+                        ds.setES(data[i]);
+                        break;
+                    case 7:
+                        ds.setFR(data[i]);
+                        break;
+                    case 8:
+                        ds.setCY(data[i]);
+                        break;
+                    case 9:
+                        ds.setLV(data[i]);
+                        break;
+                    case 10:
+                        ds.setHU(data[i]);
+                        break;
+                    case 11:
+                        ds.setMT(data[i]);
+                        break;
+                    case 12:
+                        ds.setAT(data[i]);
+                        break;
+                    case 13:
+                        ds.setPL(data[i]);
+                        break;
+                    case 14:
+                        ds.setPL(data[i]);
+                        break;
+                    case 15:
+                        ds.setRO(data[i]);
+                        break;
+                    case 16:
+                        ds.setSI(data[i]);
+                        break;
+                    case 17:
+                        ds.setSK(data[i]);
+                        break;
+                    case 18:
+                        ds.setTR(data[i]);
+                        break;
+                    default:
+                        break;
+                }
 
-        } finally {
-            if (beanReader != null) {
-                beanReader.close();
+                this._dataSet.add(ds);
             }
         }
-
-    }
-
-    private CellProcessor[] GetProcessor() {
-        return new CellProcessor[]{
-                new NotNull(),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool()),
-                new Optional(new ParseBool())
-        };
+        csvReader.close();
     }
 }
