@@ -1,7 +1,5 @@
 package com.federicobenedetti.oop;
 
-import org.apache.commons.lang3.math.NumberUtils;
-
 public class DataSet {
     private String BmiSexAgeQuantileTimeGeo;
     private double BE;
@@ -60,13 +58,7 @@ public class DataSet {
     }
 
     private double StringToBoolean(String number) {
-        if (number.isEmpty()) {
-            return 0;
-        }
-        if (NumberUtils.isNumber(number)) {
-            return Double.parseDouble(number);
-        }
-        return 0;
+        return Double.parseDouble(number);
     }
 
     public double getBE() {

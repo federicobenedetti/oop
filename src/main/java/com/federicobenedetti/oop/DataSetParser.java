@@ -17,78 +17,109 @@ public class DataSetParser {
     public void ParseDataSetAndFill() throws Exception {
         System.out.println("Parsing DataSet");
         BufferedReader csvReader = new BufferedReader(new FileReader(this._dataSetFile));
-
         String row;
+        DataSet ds;
+
+        csvReader.readLine();   // Skipping header
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split("\t");
 
-            for (int i = 0; i < data.length; i++) {
-                DataSet ds = new DataSet();
+            ds = new DataSet();
+
+            // Last line is dirty
+            for (int i = 0; i < data.length - 1; i++) {
+                String val = SanitizeValue(data[i], i);
+
                 switch (i) {
                     case 0:
-                        ds.setBmiSexAgeQuantileTimeGeo(data[i]);
+                        ds.setBmiSexAgeQuantileTimeGeo(val);
                         break;
                     case 1:
-                        ds.setBE(data[i]);
+                        ds.setBE(val);
                         break;
                     case 2:
-                        ds.setBG(data[i]);
+                        ds.setBG(val);
                         break;
                     case 3:
-                        ds.setDE(data[i]);
+                        ds.setCZ(val);
                         break;
                     case 4:
-                        ds.setEE(data[i]);
+                        ds.setDE(val);
                         break;
                     case 5:
-                        ds.setEL(data[i]);
+                        ds.setEE(val);
                         break;
                     case 6:
-                        ds.setES(data[i]);
+                        ds.setEL(val);
                         break;
                     case 7:
-                        ds.setFR(data[i]);
+                        ds.setES(val);
                         break;
                     case 8:
-                        ds.setCY(data[i]);
+                        ds.setFR(val);
                         break;
                     case 9:
-                        ds.setLV(data[i]);
+                        ds.setCY(val);
                         break;
                     case 10:
-                        ds.setHU(data[i]);
+                        ds.setLV(val);
                         break;
                     case 11:
-                        ds.setMT(data[i]);
+                        ds.setHU(val);
                         break;
                     case 12:
-                        ds.setAT(data[i]);
+                        ds.setMT(val);
                         break;
                     case 13:
-                        ds.setPL(data[i]);
+                        ds.setAT(val);
                         break;
                     case 14:
-                        ds.setPL(data[i]);
+                        ds.setPL(val);
                         break;
                     case 15:
-                        ds.setRO(data[i]);
+                        ds.setRO(val);
                         break;
                     case 16:
-                        ds.setSI(data[i]);
+                        ds.setSI(val);
                         break;
                     case 17:
-                        ds.setSK(data[i]);
+                        ds.setSK(val);
                         break;
                     case 18:
-                        ds.setTR(data[i]);
+                        ds.setTR(val);
                         break;
                     default:
                         break;
                 }
-
-                this._dataSet.add(ds);
             }
+            System.out.println("DataSet: " + ds.toString());
+            this._dataSet.add(ds);
         }
         csvReader.close();
+    }
+
+    private String SanitizeValue(String val, int i) {
+
+        // If we're checking the first column, just return the value
+        // it's not a number
+        if (i == 0) {
+            return val.trim();
+        }
+
+        String temp = val;
+
+        // Check for dirty characters
+        temp = temp.replace(":", "");
+        temp = temp.replace("c", "");
+        temp = temp.replace("u", "");
+
+        // Trim trailing whitespaces
+        temp = temp.trim();
+
+        if (temp.length() > 4) {
+            temp = temp.substring(0, 4);
+        }
+
+        return temp;
     }
 }
