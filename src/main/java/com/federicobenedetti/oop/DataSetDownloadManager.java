@@ -37,6 +37,7 @@ public class DataSetDownloadManager {
         if (!this._isDataSetPresent) {
             System.out.println("DataSet is NOT present, downloading...");
             try {
+                System.out.println("Starting download.");
                 HttpURLConnection.setFollowRedirects(true);
                 URL url = new URL(this._dataSetUrl);
                 HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -44,7 +45,9 @@ public class DataSetDownloadManager {
                 httpConn.setDoInput(true);
                 httpConn.connect();
                 if (httpConn.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
+                    System.out.println("Redirect detected");
                     URL redirectUrl = new URL(httpConn.getHeaderField("Location"));
+                    System.out.println("Redirect URL: " + redirectUrl);
                     httpConn = (HttpURLConnection) redirectUrl.openConnection();
                 }
                 InputStream is = httpConn.getInputStream();
