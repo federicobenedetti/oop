@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class DataSet {
     private String BmiSexAgeQuantileTimeGeo;
-    private HashMap<String, Double> DataSetValues = new HashMap<String, Double>();
+    private HashMap<String, Double> DataSetValues = new HashMap<>();
 
     public DataSet() {
     }

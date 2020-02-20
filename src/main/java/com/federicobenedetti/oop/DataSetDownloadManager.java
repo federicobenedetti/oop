@@ -19,10 +19,7 @@ public class DataSetDownloadManager {
 
     public DataSetDownloadManager(String url, ArrayList<DataSet> dataSet) {
         this._dataSet = dataSet;
-
-        System.out.println("DatasetDownloadManager init with URL: " + url);
         this._dataSetUrl = url;
-
         this._isDataSetPresent = IsDataSetPresent();
     }
 
@@ -36,9 +33,10 @@ public class DataSetDownloadManager {
 
 
     public void DownloadDataSet() {
+        System.out.println("Checking DataSet...");
         if (!this._isDataSetPresent) {
+            System.out.println("DataSet is NOT present, downloading...");
             try {
-                System.out.println("Starting download");
                 HttpURLConnection.setFollowRedirects(true);
                 URL url = new URL(this._dataSetUrl);
                 HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -46,20 +44,20 @@ public class DataSetDownloadManager {
                 httpConn.setDoInput(true);
                 httpConn.connect();
                 if (httpConn.getResponseCode() == HttpURLConnection.HTTP_MOVED_TEMP) {
-                    System.out.println("Redirect detected");
                     URL redirectUrl = new URL(httpConn.getHeaderField("Location"));
-                    System.out.println("Redirect URL: " + redirectUrl);
                     httpConn = (HttpURLConnection) redirectUrl.openConnection();
                 }
                 InputStream is = httpConn.getInputStream();
                 Files.copy(is, Paths.get(this._dataSetName), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("DataSet downloded.");
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            System.out.println("DataSet present.");
         }
 
         if (IsDataSetPresent()) {
-            System.out.println("DataSet downloaded, now proceeding to parse...");
             DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
             try {
                 parser.ParseDataSetAndFill();

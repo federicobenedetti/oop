@@ -18,8 +18,6 @@ public class OopApplication {
 
 		// Now let's download
 		_ddm.DownloadDataSet();
-
-		// TODO: Check for dataset once _ddm send it to DatasetParser
 	}
-
 }
+

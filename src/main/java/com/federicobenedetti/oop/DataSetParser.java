@@ -15,7 +15,7 @@ public class DataSetParser {
     }
 
     public void ParseDataSetAndFill() throws Exception {
-        System.out.println("Parsing DataSet");
+        System.out.println("Parsing DataSet...");
         BufferedReader csvReader = new BufferedReader(new FileReader(this._dataSetFile));
         String row;
         DataSet ds;
@@ -35,11 +35,11 @@ public class DataSetParser {
                 } else {
                     ds.SetHashMapKeyValuePair(header[i], val);
                 }
-
             }
-            System.out.println("DataSet: " + ds.toString());
             this._dataSet.add(ds);
         }
+
+        System.out.println("DataSet parsed, " + this._dataSet.size() + " elements inside");
         csvReader.close();
     }
 
