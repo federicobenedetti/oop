@@ -2,16 +2,16 @@ package com.federicobenedetti.oop.Model;
 
 public class StatsDto implements ISerializableBean {
     private String Field;
-    private int Avg = 0;
-    private int Min = 0;
-    private int Max = 0;
-    private int Std = 0;
-    private int Sum = 0;
+    private double Avg = 0;
+    private double Min = 0;
+    private double Max = 0;
+    private double Std = 0;
+    private double Sum = 0;
 
     public StatsDto() {
     }
 
-    public StatsDto(String field, int avg, int min, int max, int std, int sum) {
+    public StatsDto(String field, double avg, double min, double max, double std, double sum) {
         this.Field = field;
         this.Avg = avg;
         this.Min = min;
@@ -28,43 +28,43 @@ public class StatsDto implements ISerializableBean {
         Field = field;
     }
 
-    public int getAvg() {
+    public double getAvg() {
         return Avg;
     }
 
-    public void setAvg(int avg) {
+    public void setAvg(double avg) {
         Avg = avg;
     }
 
-    public int getMin() {
+    public double getMin() {
         return Min;
     }
 
-    public void setMin(int min) {
+    public void setMin(double min) {
         Min = min;
     }
 
-    public int getMax() {
+    public double getMax() {
         return Max;
     }
 
-    public void setMax(int max) {
+    public void setMax(double max) {
         Max = max;
     }
 
-    public int getStd() {
+    public double getStd() {
         return Std;
     }
 
-    public void setStd(int std) {
+    public void setStd(double std) {
         Std = std;
     }
 
-    public int getSum() {
+    public double getSum() {
         return Sum;
     }
 
-    public void setSum(int sum) {
+    public void setSum(double sum) {
         Sum = sum;
     }
 }

@@ -1,6 +1,7 @@
 package com.federicobenedetti.oop.Controller;
 
 import com.federicobenedetti.oop.Model.MetaDataDto;
+import com.federicobenedetti.oop.Model.StatsDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,14 @@ public class HttpRequestsController {
 	public @ResponseBody
 	ResponseEntity<ArrayList<MetaDataDto>>
 	GetMetadata() {
-		return new ResponseEntity<ArrayList<MetaDataDto>>(this.dataSetControllerInstance.GetMetaData(), HttpStatus.OK);
+		return new ResponseEntity<>(this.dataSetControllerInstance.GetMetaData(), HttpStatus.OK);
+	}
+
+	@GetMapping("/data/size")
+	public @ResponseBody
+	ResponseEntity<String>
+	GetDataSize() {
+		return new ResponseEntity<>("" + this.dataSetControllerInstance.GetDataSize(), HttpStatus.OK);
 	}
 
 	@GetMapping("/data")
@@ -28,15 +36,29 @@ public class HttpRequestsController {
 	ResponseEntity<String>
 	GetData() {
 		System.out.println("Get /data");
-		return new ResponseEntity<String>("GET /data response", HttpStatus.OK);
+		return new ResponseEntity<>("", HttpStatus.OK);
 	}
 
 	@GetMapping("/stats/{fieldName}")
 	public @ResponseBody
-	ResponseEntity<String>
+	ResponseEntity<StatsDto>
 	GetStatsByName(@PathVariable String fieldName) {
 		System.out.println("Get /stats/" + fieldName);
-		return new ResponseEntity<String>("GET /stats/" + fieldName + " response", HttpStatus.OK);
+		if (this.dataSetControllerInstance.IsFieldPresent(fieldName)) {
+			return new ResponseEntity<>(this.dataSetControllerInstance.GetStats(fieldName), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
+
+	@DeleteMapping("/delete/{id}")
+	ResponseEntity<String>
+	DeleteElement(@PathVariable int id) {
+		System.out.println("Delete /delete/" + id);
+		if (this.dataSetControllerInstance.DeleteElementWithId(id)) {
+			return new ResponseEntity<>("", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
+	}
+
 
 }

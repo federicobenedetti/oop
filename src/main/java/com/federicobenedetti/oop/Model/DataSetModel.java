@@ -5,6 +5,11 @@ import java.util.HashMap;
 public class DataSetModel {
     private String BmiSexAgeQuantileTimeGeo;
     private HashMap<String, Double> DataSetValues = new HashMap<>();
+    private int Id;
+
+    public DataSetModel(int id) {
+        Id = id;
+    }
 
     public DataSetModel() {
     }
@@ -43,5 +48,13 @@ public class DataSetModel {
 
     public void setDataSetValues(HashMap<String, Double> dataSetValues) {
         DataSetValues = dataSetValues;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 }

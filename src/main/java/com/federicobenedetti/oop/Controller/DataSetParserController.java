@@ -21,12 +21,13 @@ public class DataSetParserController {
         BufferedReader csvReader = new BufferedReader(new FileReader(this._dataSetFile));
         String row;
         DataSetModel ds;
+        int index = 0;
 
         String[] header = csvReader.readLine().split("\t");
 
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split("\t");
-            ds = new DataSetModel();
+            ds = new DataSetModel(index);
 
             // Last line is dirty
             for (int i = 0; i < data.length - 1; i++) {
@@ -39,6 +40,7 @@ public class DataSetParserController {
                 }
             }
             this._dataSet.add(ds);
+            index = index + 1;
         }
 
         System.out.println("DataSet parsed, " + this._dataSet.size() + " elements inside");
