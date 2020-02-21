@@ -1,12 +1,12 @@
-package com.federicobenedetti.oop;
+package com.federicobenedetti.oop.Model;
 
 import java.util.HashMap;
 
-public class DataSet {
+public class DataSetModel {
     private String BmiSexAgeQuantileTimeGeo;
     private HashMap<String, Double> DataSetValues = new HashMap<>();
 
-    public DataSet() {
+    public DataSetModel() {
     }
 
     @Override

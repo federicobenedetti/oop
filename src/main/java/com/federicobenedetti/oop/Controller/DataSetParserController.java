@@ -1,15 +1,17 @@
-package com.federicobenedetti.oop;
+package com.federicobenedetti.oop.Controller;
+
+import com.federicobenedetti.oop.Model.DataSetModel;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class DataSetParser {
+public class DataSetParserController {
     private File _dataSetFile;
-    private ArrayList<DataSet> _dataSet;
+    private ArrayList<DataSetModel> _dataSet;
 
-    public DataSetParser(File dataSetFile, ArrayList<DataSet> dataSet) {
+    public DataSetParserController(File dataSetFile, ArrayList<DataSetModel> dataSet) {
         this._dataSetFile = dataSetFile;
         this._dataSet = dataSet;
     }
@@ -18,13 +20,13 @@ public class DataSetParser {
         System.out.println("Parsing DataSet...");
         BufferedReader csvReader = new BufferedReader(new FileReader(this._dataSetFile));
         String row;
-        DataSet ds;
+        DataSetModel ds;
 
         String[] header = csvReader.readLine().split("\t");
 
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split("\t");
-            ds = new DataSet();
+            ds = new DataSetModel();
 
             // Last line is dirty
             for (int i = 0; i < data.length - 1; i++) {

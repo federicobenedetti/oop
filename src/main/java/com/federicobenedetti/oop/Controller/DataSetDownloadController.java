@@ -1,4 +1,6 @@
-package com.federicobenedetti.oop;
+package com.federicobenedetti.oop.Controller;
+
+import com.federicobenedetti.oop.Model.DataSetModel;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,14 +12,14 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
-public class DataSetDownloadManager {
+public class DataSetDownloadController {
 
     private String _dataSetUrl;
-    private ArrayList<DataSet> _dataSet;
+    private ArrayList<DataSetModel> _dataSet;
     private String _dataSetName = "dataset.tsv";
     private boolean _isDataSetPresent = false;
 
-    public DataSetDownloadManager(String url, ArrayList<DataSet> dataSet) {
+    public DataSetDownloadController(String url, ArrayList<DataSetModel> dataSet) {
         this._dataSet = dataSet;
         this._dataSetUrl = url;
         this._isDataSetPresent = IsDataSetPresent();
@@ -61,7 +63,7 @@ public class DataSetDownloadManager {
         }
 
         if (IsDataSetPresent()) {
-            DataSetParser parser = new DataSetParser(new File(this._dataSetName), this._dataSet);
+            DataSetParserController parser = new DataSetParserController(new File(this._dataSetName), this._dataSet);
             try {
                 parser.ParseDataSetAndFill();
             } catch (Exception e) {
