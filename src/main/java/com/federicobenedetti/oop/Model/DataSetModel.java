@@ -36,4 +36,12 @@ public class DataSetModel {
     public void setBmiSexAgeQuantileTimeGeo(String bmiSexAgeQuantileTimeGeo) {
         BmiSexAgeQuantileTimeGeo = bmiSexAgeQuantileTimeGeo;
     }
+
+    public HashMap<String, Double> getDataSetValues() {
+        return DataSetValues;
+    }
+
+    public void setDataSetValues(HashMap<String, Double> dataSetValues) {
+        DataSetValues = dataSetValues;
+    }
 }

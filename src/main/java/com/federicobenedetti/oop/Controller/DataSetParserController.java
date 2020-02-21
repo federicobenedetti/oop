@@ -35,7 +35,7 @@ public class DataSetParserController {
                 if (i == 0) {
                     ds.setBmiSexAgeQuantileTimeGeo(val);
                 } else {
-                    ds.SetHashMapKeyValuePair(header[i], val);
+                    ds.SetHashMapKeyValuePair(header[i].trim(), val);
                 }
             }
             this._dataSet.add(ds);

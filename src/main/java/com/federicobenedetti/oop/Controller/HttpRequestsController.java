@@ -1,8 +1,11 @@
 package com.federicobenedetti.oop.Controller;
 
+import com.federicobenedetti.oop.Model.MetaDataDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api")
@@ -15,10 +18,9 @@ public class HttpRequestsController {
 
 	@GetMapping("/metadata")
 	public @ResponseBody
-	ResponseEntity<String>
+	ResponseEntity<ArrayList<MetaDataDto>>
 	GetMetadata() {
-		System.out.println("Get /metadata");
-		return new ResponseEntity<String>("GET /metadata response", HttpStatus.OK);
+		return new ResponseEntity<ArrayList<MetaDataDto>>(this.dataSetControllerInstance.GetMetaData(), HttpStatus.OK);
 	}
 
 	@GetMapping("/data")
