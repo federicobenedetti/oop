@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class HttpRequestsController {
+	private DataSetController dataSetControllerInstance;
+
+	public HttpRequestsController() {
+		dataSetControllerInstance = new DataSetController();
+	}
 
 	@GetMapping("/metadata")
 	public @ResponseBody

@@ -15,4 +15,11 @@ public class DataSetController {
         _dsdc.DownloadDataSet();
     }
 
+    public void PrintDataSet() {
+        for (DataSetModel element :
+                this._dataSet) {
+            System.out.println("Element: " + element.toString());
+        }
+    }
+
 }
