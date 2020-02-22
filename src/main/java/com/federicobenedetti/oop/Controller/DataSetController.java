@@ -38,47 +38,51 @@ public class DataSetController {
                 return true;
             }
         }
-
         return false;
     }
 
     public StatsDto GetStats(String fieldName) {
-        int i = 0;
+        ArrayList<Double> std = new ArrayList<>();
+
+        int count = 0;
         double min = 0;
         double max = 0;
         double avg = 0;
         double sum = 0;
-        ArrayList<Double> std = new ArrayList<>();
         double devStd = 0;
         double val = 0;
 
-        for (DataSetModel e :
-                this._dataSet) {
-            val = e.getDataSetValues().get(fieldName);
+        // Parto da 1, l'header lo salto (lo controllo su IsFieldPresent)
+        for (int i = 1; i < this._dataSet.size(); i++) {
 
-            // Inserisco nell'array tutti i valori del dato fieldName
-            std.add(val);
+            if (this._dataSet.get(i).getDataSetValues().containsKey(fieldName)) {
+                val = this._dataSet.get(i).getDataSetValues().get(fieldName);
 
-            // Calcolo somma
-            sum += val;
 
-            // Calcolo minimo e massimo
-            if (i == 0) {
-                min = val;
-                max = val;
+                // Inserisco nell'array tutti i valori del dato fieldName
+                std.add(val);
+
+                // Calcolo somma
+                sum += val;
+
+                // Calcolo minimo e massimo
+                if (count == 0) {
+                    min = val;
+                    max = val;
+                }
+                if (val < min) {
+                    min = val;
+                }
+                if (val > max) {
+                    max = val;
+                }
+                count += 1;
+
             }
-            if (val < min) {
-                min = val;
-            }
-            if (val > max) {
-                max = val;
-            }
-
-            i = i + 1;
         }
 
         // Calcolo media
-        avg = sum / i;
+        avg = sum / count;
 
         // Calcolo varianza
         for (int j = 0; j < std.size(); j++) {
@@ -88,10 +92,10 @@ public class DataSetController {
             devStd += std.get(j);
         }
 
-        devStd = devStd / (i - 1);
+        devStd = devStd / (count - 1);
 
         // Creo la statistica e la ritorno
-        return new StatsDto(fieldName, avg, min, max, devStd, sum);
+        return new StatsDto(fieldName, avg, min, max, devStd, sum, count);
     }
 
     public boolean DeleteElementWithId(int id) {

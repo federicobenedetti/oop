@@ -29,8 +29,7 @@ public class DataSetParserController {
             String[] data = row.split("\t");
             ds = new DataSetModel(index);
 
-            // Last line is dirty
-            for (int i = 0; i < data.length - 1; i++) {
+            for (int i = 0; i < data.length; i++) {
                 String val = SanitizeValue(data[i], i);
 
                 if (i == 0) {
