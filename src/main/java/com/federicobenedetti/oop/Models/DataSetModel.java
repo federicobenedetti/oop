@@ -2,8 +2,18 @@ package com.federicobenedetti.oop.Models;
 
 import java.util.HashMap;
 
+/**
+ * This Model it's not serializable as we dont need
+ * to send it back and forth
+ * We're using DTOs for that purpose
+ */
 public class DataSetModel {
     private String BmiSexAgeQuantileTimeGeo;
+
+    /**
+     * HashMap because it is way easier to handle
+     * as we have 'dynamic' number of keys (TSV is not well formed)
+     */
     private HashMap<String, Double> DataSetValues = new HashMap<>();
     private int Id;
 

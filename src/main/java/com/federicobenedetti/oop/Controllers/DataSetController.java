@@ -8,17 +8,33 @@ import com.federicobenedetti.oop.Models.DataSetModel;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * This controller will actually manage our dataset,
+ * and expose all the methods needed by the HttpRequests controller
+ */
 public class DataSetController {
     private String DATASET = "http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing?file=data/hlth_ehis_de2.tsv.gz&unzip=true";
     private ArrayList<DataSetModel> _dataSet = new ArrayList<>();
 
     private DataSetDownloadController _dsdc;
 
+    /**
+     * First of all we need to download and parse our dataset
+     */
     public DataSetController() {
         _dsdc = new DataSetDownloadController(DATASET, _dataSet);
         _dsdc.DownloadDataSet();
     }
 
+    /**
+     * Given that our dataset is partially static, i took the decision to
+     * hardcode the first element metadata
+     * <p>
+     * The others are made up of the dicitionary key and the relative value
+     * (we dont have an alias, so instead we use the same name as the sourcefield)
+     *
+     * @return ArrayList<MetaDataDto>>
+     */
     public ArrayList<MetaDataDto> GetMetaData() {
         ArrayList list = new ArrayList<MetaDataDto>();
         list.add(new MetaDataDto("Bmi, Sex, Age, Quantile, Time, Geo", "BmiSexAgeQuantileTimeGeo", "String"));
@@ -32,6 +48,13 @@ public class DataSetController {
         return list;
     }
 
+    /**
+     * This method actually check if the field we asked
+     * is present or not.
+     *
+     * @param fieldName
+     * @return
+     */
     public boolean IsFieldPresent(String fieldName) {
         for (DataSetModel e :
                 this._dataSet) {
@@ -42,6 +65,13 @@ public class DataSetController {
         return false;
     }
 
+
+    /**
+     * This method will make up all the statistics for that given field
+     *
+     * @param fieldName
+     * @return StatsDto
+     */
     public StatsDto GetStats(String fieldName) {
         ArrayList<Double> std = new ArrayList<>();
 
@@ -102,6 +132,13 @@ public class DataSetController {
         return new StatsDto(fieldName, avg, min, max, devStd, sum, count);
     }
 
+    /**
+     * Given the ID of the row we want to delete
+     * it will look for it, save the index and then delete it
+     *
+     * @param id of the row we want to delete
+     * @return boolean
+     */
     public boolean DeleteElementWithId(int id) {
         int index = -1;
         for (int i = 0; i < this._dataSet.size(); i++) {
@@ -117,10 +154,20 @@ public class DataSetController {
         return false;
     }
 
+    /**
+     * For testing purposes, getting the dataset size (rows)
+     *
+     * @return
+     */
     public int GetDataSize() {
         return this._dataSet.size();
     }
 
+    /**
+     * This method will compose the list of all the data
+     *
+     * @return ArrayList<DataDto>>
+     */
     public ArrayList<DataDto> GetData() {
         ArrayList<DataDto> list = new ArrayList<>();
 

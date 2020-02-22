@@ -7,6 +7,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+/**
+ * This is the controller that will parse the dataset
+ * removing any weird character or number, making it easier
+ * to handle them later.
+ */
 public class DataSetParserController {
     private File _dataSetFile;
     private ArrayList<DataSetModel> _dataSet;
@@ -16,6 +21,14 @@ public class DataSetParserController {
         this._dataSet = dataSet;
     }
 
+    /**
+     * We read each line of the TSV
+     * Split it by \t as it is a 'tab-separated values'
+     * then sanitize each value we are reading
+     * and composing the object we need
+     *
+     * @throws Exception
+     */
     public void ParseDataSetAndFill() throws Exception {
         System.out.println("Parsing DataSet...");
         BufferedReader csvReader = new BufferedReader(new FileReader(this._dataSetFile));
@@ -46,6 +59,14 @@ public class DataSetParserController {
         csvReader.close();
     }
 
+    /**
+     * We're sanitizing the value we're reading as the data is filled up
+     * by many errors
+     *
+     * @param val
+     * @param i
+     * @return
+     */
     private String SanitizeValue(String val, int i) {
 
         // If we're checking the first column, just return the value

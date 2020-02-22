@@ -12,6 +12,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
+/**
+ * This is our dataset download controller
+ * it will take the URL and try download it
+ * It also check for redirect (as it seems that the server we're asking
+ * the dataset in fact, do redirect you)
+ */
 public class DataSetDownloadController {
 
     private String _dataSetUrl;
@@ -25,6 +31,11 @@ public class DataSetDownloadController {
         this._isDataSetPresent = IsDataSetPresent();
     }
 
+    /**
+     * Simple method to check if the dataset is present or not
+     *
+     * @return
+     */
     private boolean IsDataSetPresent() {
         File f = new File(this._dataSetName);
         if (f.exists() && !f.isDirectory()) {
@@ -34,6 +45,11 @@ public class DataSetDownloadController {
     }
 
 
+    /**
+     * First check if the dataset is present
+     * If not, download it checking for redirects
+     * Then give the File to our ParseController
+     */
     public void DownloadDataSet() {
         System.out.println("Checking DataSet...");
         if (!this._isDataSetPresent) {

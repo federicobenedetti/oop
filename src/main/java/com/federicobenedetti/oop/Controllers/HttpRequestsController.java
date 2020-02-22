@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+/**
+ * This is the controller for all the Http requests
+ * It provides a list of API to manage the parsed dataset
+ */
 @RestController
 @RequestMapping("/api")
 public class HttpRequestsController {
@@ -18,6 +22,11 @@ public class HttpRequestsController {
 		dataSetControllerInstance = new DataSetController();
 	}
 
+	/**
+	 * This API return the list of the metadata present
+	 *
+	 * @return ArrayList<MetaDataDto>>
+	 */
 	@GetMapping("/metadata")
 	public @ResponseBody
 	ResponseEntity<ArrayList<MetaDataDto>>
@@ -25,6 +34,11 @@ public class HttpRequestsController {
 		return new ResponseEntity<>(this.dataSetControllerInstance.GetMetaData(), HttpStatus.OK);
 	}
 
+	/**
+	 * This API return the number of rows in our dataset
+	 *
+	 * @return string
+	 */
 	@GetMapping("/data/size")
 	public @ResponseBody
 	ResponseEntity<String>
@@ -32,6 +46,11 @@ public class HttpRequestsController {
 		return new ResponseEntity<>("" + this.dataSetControllerInstance.GetDataSize(), HttpStatus.OK);
 	}
 
+	/**
+	 * this API return all the data present inside our dataset
+	 *
+	 * @return ArrayList<DataDto>>
+	 */
 	@GetMapping("/data")
 	public @ResponseBody
 	ResponseEntity<ArrayList<DataDto>>
@@ -39,6 +58,12 @@ public class HttpRequestsController {
 		return new ResponseEntity<>(this.dataSetControllerInstance.GetData(), HttpStatus.OK);
 	}
 
+	/**
+	 * This API will make statistics based on the field name sent
+	 *
+	 * @param fieldName this is the name of the field we're referring to
+	 * @return StatsDto
+	 */
 	@GetMapping("/stats/{fieldName}")
 	public @ResponseBody
 	ResponseEntity<StatsDto>
@@ -49,16 +74,12 @@ public class HttpRequestsController {
 		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
 
-	@GetMapping("/stats/population/{fieldName}")
-	public @ResponseBody
-	ResponseEntity<StatsDto>
-	GetPopulationStats(@PathVariable String fieldName) {
-		if (this.dataSetControllerInstance.IsFieldPresent(fieldName)) {
-			return new ResponseEntity<>(this.dataSetControllerInstance.GetStats(fieldName), HttpStatus.OK);
-		}
-		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-	}
-
+	/**
+	 * This API will delete the row with the associated ID
+	 *
+	 * @param id of the row we want to delete
+	 * @return string
+	 */
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<String>
 	DeleteElement(@PathVariable int id) {

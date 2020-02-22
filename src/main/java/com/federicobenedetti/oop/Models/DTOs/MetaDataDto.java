@@ -3,6 +3,10 @@ package com.federicobenedetti.oop.Models.DTOs;
 import com.federicobenedetti.oop.Models.Interfaces.ISerializableBean;
 
 public class MetaDataDto implements ISerializableBean {
+    /**
+     * Alias and sourcefield will match as the dataset we have doesnt have any
+     * explanation of the field inside
+     */
     private String Alias;
     private String SourceField;
     private String Type;
