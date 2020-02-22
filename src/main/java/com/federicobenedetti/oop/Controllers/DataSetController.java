@@ -1,8 +1,9 @@
-package com.federicobenedetti.oop.Controller;
+package com.federicobenedetti.oop.Controllers;
 
-import com.federicobenedetti.oop.Model.DataSetModel;
-import com.federicobenedetti.oop.Model.MetaDataDto;
-import com.federicobenedetti.oop.Model.StatsDto;
+import com.federicobenedetti.oop.Models.DTOs.DataDto;
+import com.federicobenedetti.oop.Models.DTOs.MetaDataDto;
+import com.federicobenedetti.oop.Models.DTOs.StatsDto;
+import com.federicobenedetti.oop.Models.DataSetModel;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -70,7 +71,10 @@ public class DataSetController {
                     min = val;
                     max = val;
                 }
-                if (val < min) {
+
+                // Escludo gli 0 in quanto, analizzando i valori, non sono presenti di base nel dataset
+                // Vengono aggiunti in fase di sanitizzazione dei valori stessi
+                if (val != 0 && val < min) {
                     min = val;
                 }
                 if (val > max) {
@@ -115,5 +119,14 @@ public class DataSetController {
 
     public int GetDataSize() {
         return this._dataSet.size();
+    }
+
+    public ArrayList<DataDto> GetData() {
+        ArrayList<DataDto> list = new ArrayList<>();
+
+        for (int i = 0; i < this._dataSet.size(); i++) {
+            list.add(new DataDto(i, this._dataSet.get(i).getBmiSexAgeQuantileTimeGeo(), this._dataSet.get(i).getDataSetValues(), this._dataSet.get(i).getId()));
+        }
+        return list;
     }
 }

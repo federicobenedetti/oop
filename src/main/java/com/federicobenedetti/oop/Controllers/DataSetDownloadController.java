@@ -1,6 +1,6 @@
-package com.federicobenedetti.oop.Controller;
+package com.federicobenedetti.oop.Controllers;
 
-import com.federicobenedetti.oop.Model.DataSetModel;
+import com.federicobenedetti.oop.Models.DataSetModel;
 
 import java.io.File;
 import java.io.IOException;

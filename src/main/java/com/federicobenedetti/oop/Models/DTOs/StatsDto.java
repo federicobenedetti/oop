@@ -1,4 +1,6 @@
-package com.federicobenedetti.oop.Model;
+package com.federicobenedetti.oop.Models.DTOs;
+
+import com.federicobenedetti.oop.Models.Interfaces.ISerializableBean;
 
 public class StatsDto implements ISerializableBean {
     private String Field;

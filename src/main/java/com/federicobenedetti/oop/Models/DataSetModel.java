@@ -1,4 +1,4 @@
-package com.federicobenedetti.oop.Model;
+package com.federicobenedetti.oop.Models;
 
 import java.util.HashMap;
 

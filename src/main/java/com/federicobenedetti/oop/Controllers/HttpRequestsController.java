@@ -1,7 +1,8 @@
-package com.federicobenedetti.oop.Controller;
+package com.federicobenedetti.oop.Controllers;
 
-import com.federicobenedetti.oop.Model.MetaDataDto;
-import com.federicobenedetti.oop.Model.StatsDto;
+import com.federicobenedetti.oop.Models.DTOs.DataDto;
+import com.federicobenedetti.oop.Models.DTOs.MetaDataDto;
+import com.federicobenedetti.oop.Models.DTOs.StatsDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,17 +34,25 @@ public class HttpRequestsController {
 
 	@GetMapping("/data")
 	public @ResponseBody
-	ResponseEntity<String>
+	ResponseEntity<ArrayList<DataDto>>
 	GetData() {
-		System.out.println("Get /data");
-		return new ResponseEntity<>("", HttpStatus.OK);
+		return new ResponseEntity<>(this.dataSetControllerInstance.GetData(), HttpStatus.OK);
 	}
 
 	@GetMapping("/stats/{fieldName}")
 	public @ResponseBody
 	ResponseEntity<StatsDto>
 	GetStatsByName(@PathVariable String fieldName) {
-		System.out.println("Get /stats/" + fieldName);
+		if (this.dataSetControllerInstance.IsFieldPresent(fieldName)) {
+			return new ResponseEntity<>(this.dataSetControllerInstance.GetStats(fieldName), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	}
+
+	@GetMapping("/stats/population/{fieldName}")
+	public @ResponseBody
+	ResponseEntity<StatsDto>
+	GetPopulationStats(@PathVariable String fieldName) {
 		if (this.dataSetControllerInstance.IsFieldPresent(fieldName)) {
 			return new ResponseEntity<>(this.dataSetControllerInstance.GetStats(fieldName), HttpStatus.OK);
 		}
@@ -53,12 +62,9 @@ public class HttpRequestsController {
 	@DeleteMapping("/delete/{id}")
 	ResponseEntity<String>
 	DeleteElement(@PathVariable int id) {
-		System.out.println("Delete /delete/" + id);
 		if (this.dataSetControllerInstance.DeleteElementWithId(id)) {
 			return new ResponseEntity<>("", HttpStatus.OK);
 		}
 		return new ResponseEntity<>("", HttpStatus.BAD_REQUEST);
 	}
-
-
 }
