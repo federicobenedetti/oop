@@ -33,7 +33,7 @@ public class DataSetController {
      * The others are made up of the dicitionary key and the relative value
      * (we dont have an alias, so instead we use the same name as the sourcefield)
      *
-     * @return ArrayList<MetaDataDto>>
+     * @return list of MetaDataDto
      */
     public ArrayList<MetaDataDto> GetMetaData() {
         ArrayList list = new ArrayList<MetaDataDto>();
@@ -157,7 +157,7 @@ public class DataSetController {
     /**
      * For testing purposes, getting the dataset size (rows)
      *
-     * @return
+     * @return the
      */
     public int GetDataSize() {
         return this._dataSet.size();
@@ -166,7 +166,7 @@ public class DataSetController {
     /**
      * This method will compose the list of all the data
      *
-     * @return ArrayList<DataDto>>
+     * @return list of DataDto
      */
     public ArrayList<DataDto> GetData() {
         ArrayList<DataDto> list = new ArrayList<>();

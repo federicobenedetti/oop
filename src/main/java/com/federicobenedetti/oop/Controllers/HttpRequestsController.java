@@ -25,7 +25,7 @@ public class HttpRequestsController {
 	/**
 	 * This API return the list of the metadata present
 	 *
-	 * @return ArrayList<MetaDataDto>>
+	 * @return list of MetaDataDto
 	 */
 	@GetMapping("/metadata")
 	public @ResponseBody
@@ -49,7 +49,7 @@ public class HttpRequestsController {
 	/**
 	 * this API return all the data present inside our dataset
 	 *
-	 * @return ArrayList<DataDto>>
+	 * @return list of DataDto
 	 */
 	@GetMapping("/data")
 	public @ResponseBody

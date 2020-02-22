@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.federicobenedetti.oop"},{"l":"com.federicobenedetti.oop.Controllers"},{"l":"com.federicobenedetti.oop.Models"},{"l":"com.federicobenedetti.oop.Models.DTOs"},{"l":"com.federicobenedetti.oop.Models.Interfaces"}]
